@@ -723,3 +723,18 @@ function composerUpdate(){
   composer require $(composer show -s --format=json | jq '.requires | keys | map(.+" ") | add' -r)
   composer require --dev $(composer show -s --format=json | jq '.devRequires | keys | map(.+" ") | add' -r)
 }
+
+
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+# Kill a process by port
+killport() {
+  lsof -ti tcp:"$1" | xargs kill -9
+}
+
+# Quick MySQL connect
+mydb() {
+  mysql -u root -p
+}
