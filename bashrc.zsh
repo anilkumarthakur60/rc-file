@@ -738,3 +738,8 @@ killport() {
 mydb() {
   mysql -u root -p
 }
+
+
+refresh() {
+  ./refresh.sh
+}
