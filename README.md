@@ -2,7 +2,7 @@
 
 A collection of custom zsh functions for Laravel, Git, and frontend development workflows.
 
-## Installation
+## Installation (macOS)
 
 **1. Clone the repo**
 
@@ -10,19 +10,35 @@ A collection of custom zsh functions for Laravel, Git, and frontend development 
 git clone <repo-url> ~/rc-file
 ```
 
-**2. Source `bashrc.zsh` from your `.zshrc`**
-
-Add this line to `~/.zshrc`:
+**2. Create `~/.zshrc.d` if it doesn't exist**
 
 ```zsh
-source ~/rc-file/bashrc.zsh
+mkdir -p ~/.zshrc.d
 ```
 
-**3. Reload your shell**
+**3. Symlink `bashrc.zsh` into `~/.zshrc.d`**
+
+```zsh
+ln -s ~/rc-file/bashrc.zsh ~/.zshrc.d/rc-file.zsh
+```
+
+**4. Make sure `~/.zshrc` loads all files from `~/.zshrc.d`**
+
+Add this to the bottom of `~/.zshrc` if it isn't already there:
+
+```zsh
+for file in ~/.zshrc.d/*.zsh; do
+  [[ -r "$file" ]] && source "$file"
+done
+```
+
+**5. Reload your shell**
 
 ```zsh
 source ~/.zshrc
 ```
+
+> **Tip:** Using a symlink means you can `git pull` inside `~/rc-file` to get updates — no need to touch `~/.zshrc.d` again.
 
 ---
 
