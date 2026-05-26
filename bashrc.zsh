@@ -43,6 +43,10 @@ function cdu() {
   composer dump-autoload "$@"
 }
 
+function pn() {
+  pnpm "$@"
+}
+
 function gst() {
   git status "$@"
 }
