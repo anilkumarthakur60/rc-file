@@ -285,6 +285,10 @@ function ck() {
   fi
 }
 
+function ncu(){
+  pnpm dlx npm-check-updates -u --deep 
+}
+
 function rl() {
   php artisan r:l "$@"
 }
